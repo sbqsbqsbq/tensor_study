@@ -5,13 +5,12 @@ sess = tf.InteractiveSession() # Interactive Session Initialize
 
 x = tf.placeholder(tf.float32, shape=[None, 784])
 y_ = tf.placeholder(tf.float32, shape=[None, 10])
-
 W = tf.Variable(tf.zeros([784, 10]))
 b = tf.Variable(tf.zeros([10]))
 
 sess.run(tf.global_variables_initializer())
 
-y = tf.nn.softmax(tf.matmul(x, W) + b)
+y = tf.nn.softmax(tf.matmul(x, W) + b)  # y = W*x + b
 
 cross_entropy = tf.reduce_mean(-tf.reduce_sum(y_ * tf.log(y), reduction_indices=[1]))
 
